@@ -1,0 +1,10 @@
+RECON-INFO
+lib/*/version.py
+*/version.py
+build/
+dist/
+*.pyc
+*.o
+*.so
+*.egg-info
+*.swp
