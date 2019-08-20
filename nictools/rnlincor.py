@@ -367,7 +367,7 @@ def run(*args,**inopt):
 #......................................................................
 #Support running from the shell
 #......................................................................
-if __name__ == '__main__':
+def main():
     import optparse
     #Define UI
     p=optparse.OptionParser()
@@ -382,3 +382,7 @@ if __name__ == '__main__':
 
     #and run the task
     run(*args, **optd)
+
+
+if __name__ == '__main__':
+    main()

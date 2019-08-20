@@ -543,32 +543,40 @@ def median( y, mask):
 # end of median()
 
 
-if __name__=="__main__":
-        """Get input file and other arguments, and call nic_rem_persist.
-            The command-line options are::
+def main():
+    """Get input file and other arguments, and call nic_rem_persist.
+        The command-line options are::
 
-              -q (quiet)
-              -v (very verbose)
+          -q (quiet)
+          -v (very verbose)
 
-            Parameters
-            ----------
-            cmdline : list of strings
-                command-line arguments
+        Parameters
+        ----------
+        cmdline : list of strings
+            command-line arguments
 
-        """
+    """
 
-        if ( sys.argv[1] ): calcfile = sys.argv[1]
-        if ( sys.argv[2] ): targfile = sys.argv[2]
-        [ options, args, parser ] = persutil.getOptions()
+    if len(sys.argv) < 2:
+        print("not enough arguments", file=sys.stderr)
+        exit(1)
 
-        try:
-            [ persist_lo, used_lo] = check_cl_pars(calcfile, targfile, persist_lo, used_lo)
-            nrp = NicRemPersist( calcfile, targfile, persist_lo=options.persist_lo, used_lo=options.used_lo,
-                                persist_model=options.persist_model, persist_mask=options.persist_mask,
-                                verbosity=options.verbosity )
-            nrp_stat = nrp.persist()
+    if ( sys.argv[1] ): calcfile = sys.argv[1]
+    if ( sys.argv[2] ): targfile = sys.argv[2]
+    [ options, args, parser ] = persutil.getOptions()
 
-            del nrp
-        except Exception as errmess:
-            opusutil.PrintMsg("F","ERROR "+ str(errmess))
-            sys.exit( ERROR_RETURN)
+    try:
+        [ persist_lo, used_lo] = check_cl_pars(calcfile, targfile, persist_lo, used_lo)
+        nrp = NicRemPersist( calcfile, targfile, persist_lo=options.persist_lo, used_lo=options.used_lo,
+                            persist_model=options.persist_model, persist_mask=options.persist_mask,
+                            verbosity=options.verbosity )
+        nrp_stat = nrp.persist()
+
+        del nrp
+    except Exception as errmess:
+        opusutil.PrintMsg("F","ERROR "+ str(errmess))
+        sys.exit( ERROR_RETURN)
+
+
+if __name__ == '__main__':
+    main()

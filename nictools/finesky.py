@@ -289,9 +289,8 @@ def write_to_file(data, filename, hdr, verbosity):
     if (verbosity >=1 ): print('...wrote masked median image to: ',filename)
 
 
-if __name__=="__main__":
-
-     """Get input file and other arguments, and call CalTempFromBias.
+def main():
+    """Get input file and other arguments, and call CalTempFromBias.
         The command-line options are::
 
             -q (quiet)
@@ -348,3 +347,7 @@ if __name__=="__main__":
      except Exception as errmess:
        opusutil.PrintMsg("F","FATAL ERROR "+ str(errmess))
        sys.exit( ERROR_RETURN)
+
+
+if __name__ == '__main__':
+    main()

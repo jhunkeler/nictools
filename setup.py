@@ -27,6 +27,15 @@ setup(
         '': ['LICENSE.txt'],
         PACKAGENAME: ['SP_LICENSE'],
     },
+    entry_points={
+        'console_scripts': [
+            '{0}_CalTempFromBias = {0}.CalTempFromBias:main'.format(PACKAGENAME),
+            '{0}_rnlincor = {0}.rnlincor:main'.format(PACKAGENAME),
+            '{0}_makemedmask = {0}.makemedmask:main'.format(PACKAGENAME),
+            '{0}_nic_rem_persist = {0}.nic_rem_persist:main'.format(PACKAGENAME),
+            '{0}_finesky = {0}.finesky:main'.format(PACKAGENAME),
+        ],
+    },
     author='Vicki Laidler, David Grumm',
     author_email='help@stsci.edu',
     description='Python Tools for NICMOS Data',
